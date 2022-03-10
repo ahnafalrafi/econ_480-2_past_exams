@@ -1,0 +1,273 @@
+\section{Uniform convergence with a growing number of regressors}
+
+Suppose that
+\[
+  \mathbf{Y}_{n} = \mathbf{X}_{n} \beta_{n} + \mathbf{U}_{n}
+\]
+where \(\mathbf{Y}_{n}\) and \(\mathbf{U}_{n}\) are \(n \times 1\) vectors,
+\(\mathbf{X}_{n}\) is an \(n \times K_{n}\) matrix, \(\beta_{n}\) is a \(K_{n}
+\times 1\) vector, \(\mathbf{U}_{n}\) is statistically independent of
+\(\mathbf{X}_{n}\), \(E \left[ \mathbf{U}_{n} \right] = \mathbf{0}_{n \times
+1}\), \(E \left[ \mathbf{U}_{n} \mathbf{U}_{n}^{\prime} \right] = \sigma^{2}
+\mathbf{I}_{n \times n}\), \(\sigma^{2} > 0\) is a finite constant and
+\(\mathbf{I}_{n \times n}\) is the \(n \times n\) identity matrix. In many
+applications, \(K_{n}\) is an increasing function of \(n\) but \(\frac{K_{n}}{n}
+\to 0\) as \(n \to \infty\). Thus, there are more explanatory variables when
+\(n\) is large than when \(n\) is small. Let \(\widehat{\beta}_{n}\) be the
+ordinary least squares estimator of \(\beta_{n}\) in this model. Suppose that
+there is some finite constant \(M > 0\) such that
+\(\left| X_{n, i, k} \right| \leq M\) with probability 1 for all \(i = 1, \dots,
+n\) and \(k = 1, \dots, K_{n}\). Suppose also that \(\frac{1}{n}
+\mathbf{X}_{n}^{\prime} \mathbf{X}_{n} = \mathbf{I}_{K_{n} \times K_{n}}\).
+Let \(z_{n}^{\prime} = \left( z_{n 1}, \dots, z_{n K_{n}} \right)\) be a \(K_{n}
+\times 1\) vector with \(\left| z_{n k} \right| \leq M\) for all \(k = 1, \dots,
+K_{n}\) and all \(n\).
+
+\begin{enumerate}
+  \item Under what additional conditions, if any, is \(z_{n}^{\prime}
+  \widehat{\beta}_{n}\) a uniformly consistent estimator of \(z_{n}^{\prime}
+  \beta_{n}\)? Uniform consistency means that \(\sup_{z_{n} : \left| z_{n k}
+  \right| \leq M} \left| z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n}
+  \right) \right| \overset{p}{\to} 0\) as \(n \to \infty\).
+  \item Suppose \(z_{n}\) is a \(K_{n} \times 1\) vector of \(1\)'s. What is the
+  rate at which \(z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n}
+  \right)\) converges in probability to 0? That is, find \(f (n)\) such that \(f
+  (n) z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right)\) has a
+  non-degenerate limiting distribution.
+\end{enumerate}
+
+\subsection{Uniform convergence}
+
+\textbf{Some notation:} Let \(\Vert \cdot \Vert\) denote the standard Euclidean
+norm and \(\Vert \cdot \Vert_{\infty}\). That is, for a generic Euclidean space
+\(\mathbb{R}^{p}\) with \(p \in \mathbb{N}\), we denote
+\[
+  \Vert a \Vert = \sqrt{\sum_{j = 1}^{p} a_{j}^{2}} \qquad \Vert a \Vert_{\infty}
+  = \max_{j = 1, \dots, p} \left| a_{j} \right|
+\]
+Then, the set of admissible \(z_{n}\)'s in the question becomes \(\left\{ z_{n}
+\in \mathbb{R}^{K_{n}} : \left\Vert z_{n} \right\Vert_{\infty} \leq M
+\right\}\).
+
+By Markov's inequality, it is sufficient to provide conditions (if any
+additional ones are needed) under which
+\[
+  E \left[ \sup_{\left\Vert z_{n} \right\Vert_{\infty} \leq M} \left|
+  z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right) \right| \right]
+  \to 0
+\]
+The usual ordinary least squares algebra gives us
+\[
+  z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right) = z_{n}^{\prime}
+  \left( \mathbf{X}_{n}^{\prime} \mathbf{X}_{n} \right)^{- 1}
+  \mathbf{X}_{n}^{\prime} \mathbf{U}_{n} = \frac{1}{n} z_{n}^{\prime}
+  \mathbf{X}_{n}^{\prime} \mathbf{U}_{n}
+\]
+where we have used the fact that \(\mathbf{X}_{n}^{\prime} \mathbf{X}_{n} = n
+\mathbf{I}_{K_{n} \times K_{n}}\). By the Cauchy-Schwarz Inequality for vectors,
+it follows that
+\[
+  \left| \frac{1}{n} z_{n}^{\prime} \mathbf{X}_{n}^{\prime} \mathbf{U}_{n}
+  \right| \leq \frac{1}{n} \left\Vert z_{n} \right\Vert
+  \left\Vert \mathbf{X}_{n}^{\prime} \mathbf{U}_{n} \right\Vert
+\]
+where \(\Vert \cdot \Vert\) denotes the standard Euclidean norm. Taking suprema
+on both sides over the set of admissible \(z_{n}\)'s, we get
+\begin{equation}
+  \begin{split}
+    \sup_{\left\Vert z_{n} \right\Vert_{\infty} \leq M} \left| z_{n}^{\prime}
+    \left( \widehat{\beta}_{n} - \beta_{n} \right) \right| = \sup_{\left\Vert
+    z_{n} \right\Vert_{\infty} \leq M} \left| \frac{1}{n} z_{n}^{\prime}
+    \mathbf{X}_{n}^{\prime} \mathbf{U}_{n} \right| \leq & \ \sup_{\left\Vert
+    z_{n} \right\Vert_{\infty} \leq M} \left\{ \frac{1}{n} \left\Vert z_{n}
+    \right\Vert \left\Vert \mathbf{X}_{n}^{\prime} \mathbf{U}_{n} \right\Vert
+    \right\} \\
+    = & \ \frac{1}{n} \left\{ \sup_{\left\Vert z_{n} \right\Vert_{\infty} \leq
+    M} \left\Vert z_{n} \right\Vert \right\} \left\Vert \mathbf{X}_{n}^{\prime}
+    \mathbf{U}_{n} \right\Vert
+  \end{split}
+  \label{eqn:2014q2:mainbound1arg}
+\end{equation}
+We can place an upper bound on the supremum in this last expression. Direct
+computation yields that for any \(z_{n}\) with \(\left\Vert z_{n}
+\right\Vert_{\infty} \leq M\)
+\[
+  \left\Vert z_{n} \right\Vert^{2} = \sum_{j = 1}^{n} z_{n j}^{2} \leq \sum_{j =
+  1}^{n} M^{2} = K_{n} M^{2}
+\]
+This means then that \(\sup_{\left\Vert z_{n} \right\Vert_{\infty} \leq M}
+\left\Vert z_{n} \right\Vert \leq M \sqrt{K_{n}}\). Combining this and
+\eqref{eqn:2014q2:mainbound1arg}, we get
+\begin{equation}
+  E \left[ \sup_{\left\Vert z_{n} \right\Vert_{\infty} \leq M} \left|
+  z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right) \right| \right]
+  \leq \frac{M \sqrt{K_{n}}}{n} E \left[ \left\Vert \mathbf{X}_{n}^{\prime}
+  \mathbf{U}_{n} \right\Vert \right] \label{eqn:2014q2:mainbound1}
+\end{equation}
+Next, by Jensen's inequality,
+\begin{equation}
+  E \left[ \left\Vert \mathbf{X}_{n}^{\prime} \mathbf{U}_{n} \right\Vert
+  \right]^{2} \leq E \left[ \left\Vert \mathbf{X}_{n}^{\prime} \mathbf{U}_{n}
+  \right\Vert^{2} \right] = E \left[ \mathbf{U}_{n}^{\prime} \mathbf{X}_{n}
+  \mathbf{X}_{n}^{\prime} \mathbf{U}_{n} \right] \label{eqn:2014q2:jensen}
+\end{equation}
+Dealing with \(E \left[ \mathbf{U}_{n}^{\prime} \mathbf{X}_{n}
+\mathbf{X}_{n}^{\prime} \mathbf{U}_{n} \right]\) requires some work. We can get
+an exact expression for it using the trace operator. The key thing to notice is
+that we have made assumptions about \(E \left[ \mathbf{U}_{n}
+\mathbf{U}_{n}^{\prime} \right]\) and to use it, we need to ``cycle'' the
+\(\mathbf{U}_{n}^{\prime}\) in the front of the expression in the expectation to
+the back. The trace operator has exactly the cyclic property that we need. Using
+the trace operator,
+\begin{align*}
+  E \left[ \mathbf{U}_{n}^{\prime} \mathbf{X}_{n} \mathbf{X}_{n}^{\prime}
+  \mathbf{U}_{n} \right] = & \ E \left[ \mathrm{tr} \left(
+  \mathbf{U}_{n}^{\prime} \mathbf{X}_{n} \mathbf{X}_{n}^{\prime} \mathbf{U}_{n}
+  \right) \right] & \text{the trace of a scalar is the scalar itself} \\
+  = & \ E \left[ \mathrm{tr} \left( \mathbf{X}_{n} \mathbf{X}_{n}^{\prime}
+  \mathbf{U}_{n} \mathbf{U}_{n}^{\prime} \right) \right] & \text{by the
+  cyclic property of the trace operator} \\
+  = & \ \mathrm{tr} \left( E \left[ \mathbf{X}_{n} \mathbf{X}_{n}^{\prime}
+  \mathbf{U}_{n} \mathbf{U}_{n}^{\prime} \right] \right) & \text{since the
+  trace is a linear operator} \\
+  = & \ \mathrm{tr} \left( E \left[ \mathbf{X}_{n} \mathbf{X}_{n}^{\prime}
+  \right] E \left[ \mathbf{U}_{n} \mathbf{U}_{n}^{\prime} \right] \right) &
+  \text{since } \mathbf{X}_{n} \indep \mathbf{U}_{n} \\
+  = & \ \mathrm{tr} \left( E \left[ \mathbf{X}_{n} \mathbf{X}_{n}^{\prime}
+  \right] \sigma^{2} \mathbf{I}_{n \times n} \right) & \text{by an assumption
+  made in the question} \\
+  = & \ \sigma^{2} \mathrm{tr} \left( E \left[ \mathbf{X}_{n}
+  \mathbf{X}_{n}^{\prime} \right] \right) & \text{since the trace is a
+  linear operator} \\
+  = & \ \sigma^{2} E \left[ \mathrm{tr} \left( \mathbf{X}_{n}
+  \mathbf{X}_{n}^{\prime} \right) \right] & \text{since the trace is a
+  linear operator} \\
+  = & \ \sigma^{2} E \left[ \mathrm{tr} \left( \mathbf{X}_{n}^{\prime}
+  \mathbf{X}_{n} \right) \right] & \text{by the cyclic property of the trace
+  operator} \\
+  = & \ \sigma^{2} E \left[ \mathrm{tr} \left( n \cdot \mathbf{I}_{K_{n} \times
+  K_{n}} \right) \right] & \text{by an assumption made in the question} \\
+  = & \ \sigma^{2} K_{n} n.
+\end{align*}
+Therefore, combining the above together with \eqref{eqn:2014q2:mainbound1} and
+\eqref{eqn:2014q2:jensen} we get
+\begin{equation}
+  E \left[ \sup_{\left\Vert z_{n} \right\Vert_{\infty} \leq M} \left|
+  z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right) \right| \right]
+  \leq \frac{M \sigma K_{n}}{\sqrt{n}} \label{eqn:2014q2:mainbound2}
+\end{equation}
+In the statement of the question, we require that \(\frac{K_{n}}{n} \to 0\),
+which is not enough to ensure that the RHS of \eqref{eqn:2014q2:mainbound2}
+tends to 0 as \(n \to \infty\). Clearly, a sufficient condition for this to
+happen is \(\frac{K_{n}}{\sqrt{n}} \to 0\) as \(n \to \infty\). Under this
+stronger condition, we have that for any \(\varepsilon > 0\),
+\begin{align*}
+  P \left( \sup_{\left\Vert z_{n} \right\Vert_{\infty} \leq M} \left|
+  z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right) \right| >
+  \varepsilon \right) \leq & \ E \left[ \sup_{\left\Vert z_{n}
+  \right\Vert_{\infty} \leq M} \left| z_{n}^{\prime} \left( \widehat{\beta}_{n}
+  - \beta_{n} \right) \right| \right] & \text{by Markov's inequality} \\
+  \leq & \ \frac{M \sigma K_{n}}{\sqrt{n}} & \text{by
+  \eqref{eqn:2014q2:mainbound2}} \\
+  \to & \ 0 & \text{as } n \to \infty
+\end{align*}
+
+\subsection{Rates of convergence}
+
+\begin{remark}[On rates of convergence and convergence in distribution]
+The question first asks about the rate of convergence in probability of
+\(z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right)\) to zero. There
+are a number of definitions for a ``rate of convergence'' floating around in the
+literature, but the one we use is as follows. For a sequence \(a_{n}\) of
+positive real numbers, \(\left| z_{n}^{\prime} \left( \widehat{\beta}_{n} -
+\beta_{n} \right) \right|\) converges in probability to zero at rate \(a_{n}\)
+if
+\[
+  \frac{\left| z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right)
+  \right|}{a_{n}} = O_{p} (1) \quad \text{and} \quad \frac{\left| z_{n}^{\prime}
+  \left( \widehat{\beta}_{n} - \beta_{n} \right) \right|}{a_{n}} \neq o_{p} (1).
+\]
+That is, after scale normalization by \(a_{n}\), \(z_{n}^{\prime} \left(
+\widehat{\beta}_{n} - \beta_{n} \right)\) remains stochastically bounded, but
+does not converge in probability to zero. You should convince yourself that this
+leads to a reasonable definition of a rate of convergence since it pins down the
+asymptotic behavior of \(\left| z_{n}^{\prime} \left( \widehat{\beta}_{n} -
+\beta_{n} \right) \right|\) in a sharp sense. The relationship between this
+definition and convergence in distribution is as follows. If \(a_{n}\) is such
+that \(a_{n}^{- 1} z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n}
+\right)\) converges in distribution to a non-degenerate limit, then \(a_{n}\) is
+a sharp rate of convergence. That is, providing a scale normalization that
+results in convergence in distribution to a non-degenerate limit distribution is
+sufficient to show that the aforementioned scale normalization is a sharp rate
+of convergence. However, to produce a sharp rate of convergence one does not
+have to prove convergence in distribution. For this, it is enough to provide a
+scale normalization that ``stabilizes'' some moment. We will prove this in the
+solution.
+\end{remark}
+
+We will start by deriving a scale normalization that stabilizes the second
+moment of \(z_{n}\). We do this because given a specific \(z_{n}\) such as we
+are given in this part, we can directly compute the second moment. In the
+previous part, because we have a supremum inside the expectations operator, it
+is not possible to do a direct second or first moment calculation. From the
+previous part of the question, since \(z_{n}^{\prime} \left( \widehat{\beta}_{n}
+- \beta_{n} \right) = \frac{1}{n} \mathbf{X}_{n}^{\prime} \mathbf{U}_{n}\), we
+have
+\[
+  E \left[ \left( z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right)
+  \right)^{2} \right] = \frac{1}{n^{2}} E \left[ z_{n}^{\prime}
+  \mathbf{X}_{n}^{\prime} \mathbf{U}_{n} \mathbf{U}_{n}^{\prime} \mathbf{X}_{n}
+  z_{n} \right] = \frac{1}{n^{2}} z_{n}^{\prime} E \left[
+  \mathbf{X}_{n}^{\prime} \mathbf{U}_{n} \mathbf{U}_{n}^{\prime} \mathbf{X}_{n}
+  \right] z_{n}
+\]
+where the last equality follows from the fact that \(z_{n}\) is deterministic.
+Using the Law of Iterated Expectations alongside independence of
+\(\mathbf{X}_{n}\) and \(\mathbf{U}_{n}\),
+\[
+  E \left[ \mathbf{X}_{n}^{\prime} \mathbf{U}_{n} \mathbf{U}_{n}^{\prime}
+  \mathbf{X}_{n} \right] = E \left[ \mathbf{X}_{n}^{\prime} E \left[
+  \mathbf{U}_{n} \mathbf{U}_{n}^{\prime} | \mathbf{X}_{n} \right] \mathbf{X}_{n}
+  \right] = E \left[ \mathbf{X}_{n}^{\prime} E \left[ \mathbf{U}_{n}
+  \mathbf{U}_{n}^{\prime} \right] \mathbf{X}_{n} \right] = \sigma^{2} E \left[
+  \mathbf{X}_{n}^{\prime} \mathbf{X}_{n} \right] = \sigma^{2} n
+  \mathbf{I}_{K_{n} \times K_{n}}
+\]
+where the last equality follows from the normalization \(\mathbf{X}_{n}^{\prime}
+\mathbf{X}_{n} = n \mathbf{I}_{K_{n} \times K_{n}}\) with probability
+1. Therefore it follows that
+\[
+  E \left[ \left( z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right)
+  \right)^{2} \right] = \frac{1}{n^{2}} \sigma^{2} n z_{n}^{\prime} z_{n} =
+  \sigma^{2} \frac{K_{n}}{n}
+\]
+where the last equality follows from the fact that \(z_{n}\) is a vector of
+ones. Then, setting \(a_{n} = \sigma \sqrt{\frac{K_{n}}{n}}\), we have that
+\[
+  E \left[ \left( a_{n}^{- 1} z_{n}^{\prime} \left( \widehat{\beta}_{n} -
+  \beta_{n} \right) \right)^{2} \right] = 1 \quad \forall n \in \mathbb{N}.
+\]
+Therefore, we have (by Chebychev's inequality) that
+\[
+  P \left( \left| a_{n}^{- 1} z_{n}^{\prime} \left( \widehat{\beta}_{n} -
+  \beta_{n} \right) \right| > M \right) \leq \frac{E \left[ \left( a_{n}^{- 1}
+  z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right) \right)^{2}
+  \right]}{M^{2}} = \frac{1}{M^{2}} \quad \forall M > 0.
+\]
+It follows from the definition of \(O_{p} (1)\) sequences that
+\[
+  a_{n}^{- 1} z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right) =
+  O_{p} (1).
+\]
+Furthermore, \(a_{n}^{- 1} z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n}
+\right) \neq o_{p} (1)\) since it is a normalized sum of independent variables
+as we can write
+\[
+  a_{n}^{- 1} z_{n}^{\prime} \left( \widehat{\beta}_{n} - \beta_{n} \right) =
+  \sum_{i = 1}^{n} W_{n i} U_{i}
+\]
+where
+\[
+  W_{n i} = a_{n}^{- 1} z_{n}^{\prime} X_{n i}
+\]
+and \(X_{n i}\) is the \(i\)\textsuperscript{th} row of \(\mathbf{X}_{n}\).
