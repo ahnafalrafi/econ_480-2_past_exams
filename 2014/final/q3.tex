@@ -1,0 +1,160 @@
+\section{Weak Instruments}
+Suppose that
+\begin{align*}
+  Y = & \ X \beta + U \\
+  X = & \ Z \gamma + V
+\end{align*}
+where \(Y, X, Z, U, V\) are scalar random variables, \(\beta, \gamma\) are
+unknown scalar parameters, \(Z\) is independent of \(U\) and \(V\), \(\mathbb{E}
+[U] = \mathbb{E} [V] = 0\) and
+\[
+  \mathbb{E} \left[ U^{2} \right] = \sigma_{U}^{2}, \mathbb{E} \left[ V^{2}
+  \right] = \sigma_{V}^{2}, \mathbb{E} [U V] = \sigma_{U V}, \mathbb{E} \left[
+  X^{2} \right] = M_{X} < \infty, \mathbb{E} \left[Z^{2} \right] = M_{Z} <
+  \infty
+\]
+Let \(\left\{ Y_{i}, X_{i}, Z_{i} \right\}_{i = 1}^{n}\) be an IID sample from
+the distribution of \((Y, X, Z)\). The instrumental variables estimator of
+\(\beta\) is
+\[
+  \widehat{\beta}_{n} = \frac{\sum_{i = 1}^{n} Y_{i} Z_{i}}{\sum_{i = 1}^{n}
+  X_{i} Z_{i}}
+\]
+The instrument \(Z\) is called weak if \(\gamma\) is close to zero. This can be
+formalized by setting \(\gamma = \frac{c}{\sqrt{n}}\), where \(c \neq 0\) is a
+constant.
+\begin{enumerate}
+  \item Is \(\widehat{\beta}_{n}\) consistent for \(\beta\) if \(\gamma =
+  \frac{c}{\sqrt{n}}\), for some \(c \neq 0\)?
+  \item Find the value of \(\alpha\) such that \(n^{\alpha} \left(
+    \widehat{\beta}_{n} -  \beta \right)\) has a non-degenerate limiting
+  distribution as \(n \to \infty\).
+  \item Is the limiting distribution normal? If yes, find the mean and variance
+  of the limiting distribution. If no, you need not obtain an analytic
+  expression for the limiting distribution, but you must explain the reason for
+  your answer.
+\end{enumerate}
+
+\subsection{Consistency of the instrumental variables estimator with weak
+instruments}
+
+The IV estimator is inconsistent in this case. Using the model, we have
+\[
+  \widehat{\beta}_{n} = \frac{\sum_{i = 1}^{n} Y_{i} Z_{i}}{\sum_{i = 1}^{n}
+  X_{i} Z_{i}} = \beta + \frac{\sum_{i = 1}^{n} U_{i} Z_{i}}{\frac{c}{\sqrt{n}}
+  \sum_{i = 1}^{n} Z_{i}^{2} + \sum_{i = 1}^{n} V_{i} Z_{i}}
+\]
+Dividing both numerator and denominator by \(\sqrt{n}\), we have
+\[
+  \widehat{\beta}_{n} = \beta + \frac{\frac{1}{\sqrt{n}} \sum_{i = 1}^{n} U_{i}
+  Z_{i}}{\frac{c}{n} \sum_{i = 1}^{n} Z_{i}^{2} + \frac{1}{\sqrt{n}} \sum_{i =
+  1}^{n} V_{i} Z_{i}}
+\]
+We start with applying KSLLN2 to the first term in the denominator. Since
+\(\mathbb{E} \left[ Z^{2} \right] = M_{Z} < \infty\), it follows that
+\[
+  \frac{c}{n} \sum_{i = 1}^{n} Z_{i}^{2} \overset{\mathrm{a.s.}}{\to} c
+  \mathbb{E} \left[ Z^{2} \right] = c M_{Z}
+\]
+For the remaining terms, we will apply the Multivariate LLCLT. First, note that
+since \(\mathbb{E} [U] = \mathbb{E} [V] = 0\), by independence of \(Z\) to \((U,
+V)\), it follows that
+\begin{align*}
+  \mathbb{E} [U Z] = & \ \mathbb{E} [U] \mathbb{E} [Z] = 0 \cdot \mathbb{E} [Z]
+  = 0 \\
+  \mathbb{E} [V Z] = & \ \mathbb{E} [V] \mathbb{E} [Z] = 0 \cdot \mathbb{E} [Z]
+  = 0 \\
+  \mathrm{Var} [U Z] = \mathbb{E} \left[ U^{2} Z^{2} \right] = & \ \mathbb{E}
+  \left[ U^{2} \right] \mathbb{E} \left[ Z^{2} \right] = \sigma_{U}^{2} M_{Z} <
+  \infty \\
+  \mathrm{Var} [V Z] = \mathbb{E} \left[ V^{2} Z^{2} \right] = & \ \mathbb{E}
+  \left[ V^{2} \right] \mathbb{E} \left[ Z^{2} \right] = \sigma_{V}^{2} M_{Z} <
+  \infty \\
+  \mathrm{Cov} [U Z, V Z] = \mathbb{E} [(U Z) \cdot (V Z)] = \mathbb{E} \left[ U
+  V Z^{2} \right] = & \ \mathbb{E} [U V] \cdot \mathbb{E} \left[ Z^{2} \right] =
+  \sigma_{U V} M_{Z} \in \mathbb{R}
+\end{align*}
+By the Multivariate Lindeberg-L\'evy CLT,
+\[
+  \left( \begin{array}{c}
+    \frac{1}{\sqrt{n}} \sum_{i = 1}^{n} U_{i} Z_{i} \\
+    \frac{1}{\sqrt{n}} \sum_{i = 1}^{n} V_{i} Z_{i}
+  \end{array} \right) = \frac{1}{\sqrt{n}} \sum_{i = 1}^{n}
+  \left( \begin{array}{c}
+    U_{i} Z_{i} \\
+    V_{i} Z_{i}
+  \end{array} \right) \overset{d}{\to} \mathcal{N} \left( \mathbf{0}_{2
+  \times 1}, \Sigma \right)
+\]
+where
+\[
+  \Sigma = M_{Z} \cdot \left( \begin{array}{cc}
+    \sigma_{U}^{2} & \sigma_{U V} \\
+    \sigma_{U V} & \sigma_{V}^{2}
+  \end{array} \right)
+\]
+By Slutsky's Theorem,
+\begin{align*}
+  \left( \begin{array}{c}
+    \frac{1}{\sqrt{n}} \sum_{i = 1}^{n} U_{i} Z_{i} \\
+    \frac{c}{n} \sum_{i = 1}^{n} Z_{i}^{2} + \frac{1}{\sqrt{n}} \sum_{i = 1}^{n}
+    V_{i} Z_{i}
+  \end{array} \right) = & \ \left( \begin{array}{c}
+    0 \\
+    \frac{c}{n} \sum_{i = 1}^{n} Z_{i}^{2}
+  \end{array} \right) + \frac{1}{\sqrt{n}} \sum_{i = 1}^{n}
+  \left( \begin{array}{c}
+    U_{i} Z_{i} \\
+    V_{i} Z_{i}
+  \end{array} \right) \\
+  \overset{d}{\to} & \ W = \left( \begin{array}{c}
+    W_{1} \\
+    W_{2}
+  \end{array} \right) \sim \mathcal{N} \left( \left( \begin{array}{c}
+      0 \\
+      c \mathbb{E} \left[ Z^{2} \right]
+  \end{array} \right), \Sigma \right)
+\end{align*}
+Define the transformation \(g \left( w_{1}, w_{2} \right) = \beta +
+\frac{w_{1}}{w_{2}}\). Since \(\mathbb{P} \left( W_{2} = 0 \right) = 0\), by the
+CMT
+\[
+  \widehat{\beta}_{n} \overset{d}{\to} g \left( W_{1}, W_{2} \right) = \beta +
+  \frac{W_{1}}{W_{2}}
+\]
+Since the distribution limit is stochastic, \(\widehat{\beta}_{n}
+\overset{p}{\not \to} \beta\).
+
+\begin{remark*}
+The convergence in distribution arguments can be reformulated in a number of
+equivalent ways. For instance, we could say something along the lines of
+\[
+  \widehat{\beta}_{n} \overset{d}{\to} \beta + \frac{A_{1}}{c \mathbb{E} \left[
+  Z^{2} \right] + A_{2}}
+\]
+where
+\[
+  \left( \begin{array}{c}
+    A_{1} \\
+    A_{2}
+  \end{array} \right) \sim \mathcal{N} \left( \mathbf{0}_{2 \times 1}, \Sigma
+  \right)
+\]
+This can be achieved by using a slightly different sequencing of our asymptotic
+arguments. The conclusions though are effectively the same. Notice that though
+there are different ways of getting to the same answer, there is only one
+correct conclusion in the end.
+\end{remark*}
+
+\subsection{Rate of convergence to a non-degenerate limit distribution}
+
+Clearly from the first part of the question, we have \(n^{\alpha} \left(
+\widehat{\beta}_{n} - \beta \right) \overset{d}{\to} \beta +
+\frac{W_{1}}{W_{2}}\) with \(\alpha = 0\).
+
+\subsection{Non-normality of the limit distribution}
+
+Again, the limit distribution is not normal, since it is \(\beta +
+\frac{W_{1}}{W_{2}}\) where \(W = \left( W_{1}, W_{2} \right)^{\prime}\) follows
+a bivariate normal distribution (and the ratio of the components of a bivariate
+normal distribution is not normal).
