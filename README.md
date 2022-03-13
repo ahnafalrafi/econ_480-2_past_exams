@@ -16,7 +16,30 @@ repository.
 
 The order in which exam questions are answered (as tracked by commits to this
 repository) can be arbitrary. They pretty much appear according to whims and
-other potentially (causal) factors. A bored graduate student may even decide to
+other (potentially causal) factors. A bored graduate student may even decide to
 study what factors are causal if they so wish.
 
+## Progress
+
+| Year | Midterm | Final  |
+|:-----|:--------|:-------|
+| 2008 | [ ]     | [ ]    |
+| 2009 | [ ]     | [ ]    |
+| 2010 | [ ]     | [ ]    |
+| 2011 | [ ]     | [ ]    |
+| 2012 | [ ]     | [ ]    |
+| 2013 | [ ]     | [ ]    |
+| 2014 | [ ]     | [ ] PC |
+| 2015 | [ ]     | [ ]    |
+| 2016 | [ ]     | [ ]    |
+| 2017 | [ ]     | [ ]    |
+| 2018 | [ ]     | [ ]    |
+| 2019 | [ ]     | [ ]    |
+| 2020 | [ ]     | [ ]    |
+| 2021 | [ ]     | [ ]    |
+| 2022 | [ ]     | [ ]    |
+
+- PC stands for "partially complete".
+
+## License
 The license for this project is a "do whatever you want with it" license.
