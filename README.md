@@ -4,9 +4,12 @@ This repository contains solutions to past exams for the second part of the
 three-part first year econometrics sequence at Northwestern University. These
 will be somewhat more verbose than the official solutions.
 
-The document can be compiled using the GNU `make` utility, or using `latexmk` -
-whichever you prefer. The `makefile` uses `latexmk` in its compilation rules. If
-you use GNU Emacs as your editor and the
+To get the current version of the document, you can head over to the [releases
+page](https://github.com/ahnafalrafi/econ_480-2_past_exams/releases) and
+download the pdf file from the "Assets" section of any given release. You can
+also build the document yourself. The document can be compiled using the GNU
+`make` utility, or using `latexmk` - whichever you prefer. The `makefile` uses
+`latexmk` in its compilation rules. If you use GNU Emacs as your editor and the
 [`auctex`](https://www.gnu.org/software/auctex/) package to deal with TeX files,
 you can use [`auctex-latexmk`](https://github.com/tom-tan/auctex-latexmk) to
 compile this document. The multi-file structure is dealt with by using
